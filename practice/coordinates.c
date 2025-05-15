@@ -51,7 +51,7 @@ int main(void) {
 
 
 void print_coordinates(Coordinate *arr, int size) {
-    // TODO: Complete the function.
+    // TODO: Complete the helper function.
     // Print each coordinate with zero-padded
     // 2-digit format (e.g., (03 07))
     
