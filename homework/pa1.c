@@ -15,13 +15,13 @@
 
 
 typedef struct Course_s {
-    char *code;                     // course code; dynamic string
+    char *code;                     // course code; dynamic string that is null-terminated
     int credit;                     // credit hours of this course
-    char *grade;                    // grade obtained; dynamic string
+    char *grade;                    // grade obtained; dynamic string that is null-terminated
 } Course;
 
 typedef struct Student_s {
-    char *name;                     // student's complete name; dynamic string
+    char *name;                     // student's complete name; dynamic string that is null-terminated
     int course_count;               // number of courses this student has in the list
     Course **list_of_courses;       // list of courses; dynamic array of pointers to course
 } Student;
@@ -75,12 +75,12 @@ int main(void) {
     int credit;
     char grade[GRADE_STRING_SIZE];
     
-    // iterate through the list
+    // iterate and process one student at a time
     for(int i = 0; i < student_count; i++) {
         // read one line for the name
         fgets(name, MAX_STRING_SIZE, ifile);
         
-        // trim
+        // trim the extra newline at the end
         trim_string(name);
         
         // get the course count
@@ -88,11 +88,10 @@ int main(void) {
         
         clear_buffer_file(ifile);
         
-        // create a student
+        // create a student with the given information
         Student *student = create_student(name, course_count);
         
-        // read the next few lines
-        
+        // read the next few lines to process the course information
         for(int j = 0; j < course_count; j++) {
             fscanf(ifile, "%s%d%s\n", course_code, &credit, grade);
             
