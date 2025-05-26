@@ -1,0 +1,13 @@
+3
+John Doe
+2
+COP3502 3 A
+COP3330 3 B+
+Jane Smith
+1
+COP3223 3 A-
+Super Mario
+3
+COP3502 3 B
+COP3223 3 A
+COP3330 3 B-
