@@ -256,26 +256,26 @@ void introduce_class(Student **list_of_students, int student_count) {
 void introduce(Student *student) {
     // Print the student's name and their GPA 
     // rounded to two decimal places.
-    printf("%s %.2f\n", student->name, compute_gpa(student));
+    printf("%s %.3f\n", student->name, compute_gpa(student));
 }
 
 
 double get_points(char *grade) {
     // Convert the letter grade to grade points 
     // based on the provided grade scale.
-    if( strcmp(grade, "A") == 0 )  return 4.00;
-    else if( strcmp(grade, "A-") == 0 ) return 3.75;
-    else if( strcmp(grade, "B+") == 0 ) return 3.25;
-    else if( strcmp(grade, "B") == 0 ) return 3.00;
-    else if( strcmp(grade, "B-") == 0 ) return 2.75;
-    else if( strcmp(grade, "C+") == 0 ) return 2.25;
-    else if( strcmp(grade, "C") == 0 ) return 2.00;
-    else if( strcmp(grade, "C-") == 0 ) return 1.75;
-    else if( strcmp(grade, "D+") == 0 ) return 1.25;
-    else if( strcmp(grade, "D") == 0 ) return 1.00;
-    else if( strcmp(grade, "D-") == 0 ) return 0.75;
+    if( strcmp(grade, "A") == 0 )  return 4.000;
+    else if( strcmp(grade, "A-") == 0 ) return 3.750;
+    else if( strcmp(grade, "B+") == 0 ) return 3.250;
+    else if( strcmp(grade, "B") == 0 ) return 3.000;
+    else if( strcmp(grade, "B-") == 0 ) return 2.750;
+    else if( strcmp(grade, "C+") == 0 ) return 2.250;
+    else if( strcmp(grade, "C") == 0 ) return 2.000;
+    else if( strcmp(grade, "C-") == 0 ) return 1.750;
+    else if( strcmp(grade, "D+") == 0 ) return 1.250;
+    else if( strcmp(grade, "D") == 0 ) return 1.000;
+    else if( strcmp(grade, "D-") == 0 ) return 0.750;
     
-    return 0.00;
+    return 0.000;
 }
 
 
