@@ -43,6 +43,11 @@ SLLNode * sll_remove_at(SLList *, int);
 SLLNode * sll_get_element_at(SLList *, int);
 SLLNode * sll_delete(SLList *, int);
 
+// various operations, recursive (practice)
+void sll_print_list_recursive(SLLNode *);
+void sll_insert_at_recursive(SLLNode **, int, int);
+SLLNode * sll_remove_at_recursive(SLLNode **, int);
+
 
 
 int main(void) {
