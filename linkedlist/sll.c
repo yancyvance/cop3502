@@ -41,6 +41,7 @@ SLLNode * sll_remove_head(SLList *);
 void sll_insert_at(SLList *, int, int);
 SLLNode * sll_remove_at(SLList *, int);
 SLLNode * sll_get_element_at(SLList *, int);
+SLLNode * sll_delete(SLList *, int);
 
 
 
