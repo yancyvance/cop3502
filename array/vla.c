@@ -31,7 +31,7 @@ void vla_insert_at(VLArray *list, int index, int value);
 int vla_remove_at(VLArray *list, int index);
 int vla_get_element_at(VLArray *list, int index);
 int vla_delete(VLArray *list, int value);
-int vla_add_tail(VLArray *list, int value);
+void vla_add_tail(VLArray *list, int value);
 
 // utility
 void vla_grow_list(VLArray *list);
