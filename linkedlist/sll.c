@@ -32,8 +32,8 @@ void sll_print_list(SLList *);
 int sll_search(SLList *, int);
 int sll_is_empty(SLList *);
 int sll_get_size(SLList *);
-void sll_add_tail(SLList *, int);
-void sll_add_head(SLList *, int);
+void sll_add_to_tail(SLList *, int);
+void sll_add_to_head(SLList *, int);
 SLLNode * sll_remove_tail(SLList *);
 SLLNode * sll_remove_head(SLList *);
 
@@ -113,13 +113,13 @@ int sll_get_size(SLList *list) {
     
 }
 
-void sll_add_tail(SLList *list, int value) {
+void sll_add_to_tail(SLList *list, int value) {
     
     
     
 }
 
-void sll_add_head(SLList *list, int value) {
+void sll_add_to_head(SLList *list, int value) {
     
     
     
