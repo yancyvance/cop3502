@@ -50,6 +50,12 @@ int main(void) {
     // add a node
     
     
+    
+    
+    
+    // destroy the list
+    
+    
     return 0;
 }
 
