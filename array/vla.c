@@ -18,19 +18,23 @@ typedef struct VLArray_s {
 
 // create and destory variable length array
 VLArray * vla_create_list();
-void vla_destroy_list(VLArray *vla);
+void vla_destroy_list(VLArray *list);
 
 // various operations, important
-void vla_print_list(VLArray *vla);
-int vla_search(VLArray *vla, int query);
-int vla_is_empty(VLArray *vla);
-int vla_get_size(VLArray *vla);
+void vla_print_list(VLArray *list);
+int vla_search(VLArray *list, int query);
+int vla_is_empty(VLArray *list);
+int vla_get_size(VLArray *list);
 
 // various operations, practice
-void vla_insert_at(VLArray *vla, int index, int value);
-int vla_remove_at(VLArray *vla, int index);
-int vla_get_element_at(VLArray *vla, int index);
-int vla_delete(VLArray *vla, int value);
+void vla_insert_at(VLArray *list, int index, int value);
+int vla_remove_at(VLArray *list, int index);
+int vla_get_element_at(VLArray *list, int index);
+int vla_delete(VLArray *list, int value);
+int vla_add_tail(VLArray *list, int value);
+
+// utility
+void vla_grow_list(VLArray *list);
 
 
 
