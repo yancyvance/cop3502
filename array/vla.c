@@ -5,7 +5,8 @@
 
 
 
-// struct needed
+// The VLArray struct represents a dynamic array 
+// of integers that can grow as needed.
 typedef struct VLArray_s {
     int *array;      // Pointer to the dynamically allocated array of integers
     int size;        // Current number of elements in the array
@@ -35,6 +36,9 @@ void vla_add_tail(VLArray *list, int value);
 
 // utility
 void vla_grow_list(VLArray *list);
+
+// various operations, recursive (practice)
+void vla_print_list_recursive(VLArray *list);
 
 
 
