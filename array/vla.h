@@ -38,6 +38,7 @@ int vla_remove_at(VLArray *list, int index);
 int vla_get_element_at(VLArray *list, int index);
 int vla_delete(VLArray *list, int query);
 void vla_add_tail(VLArray *list, int value);
+int vla_remove_tail(VLArray *list);
 
 // utility
 void vla_grow_list(VLArray *list);
@@ -166,6 +167,21 @@ void vla_add_tail(VLArray *list, int value) {
     
     // update size
     list->size++;
+}
+
+int vla_remove_tail(VLArray *list) {
+    // check if empty
+    if( !vla_is_empty(list) ) {
+        // remember the last value
+        int tmp = list->array[list->size-1];
+        // decrement the size
+        list->size--;
+        
+        return tmp;
+    }
+    
+    // random flag to indicate empty
+    return -1;
 }
 
 void vla_grow_list(VLArray *list) {

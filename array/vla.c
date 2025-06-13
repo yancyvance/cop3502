@@ -20,6 +20,10 @@ int main(void) {
     
     vla_print_list(list);
     
+    vla_remove_tail(list);
+    
+    vla_print_list(list);
+    
     vla_remove_at(list, 0);
     
     // confirm if outputs are the same
