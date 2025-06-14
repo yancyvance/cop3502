@@ -11,7 +11,7 @@
 
 
 
-// The StackLL struct represents a Stack that uses
+// The Stack struct represents a Stack that uses
 // a Singly Linked List as an implementation
 typedef struct Stack_s {
     SLList *list;

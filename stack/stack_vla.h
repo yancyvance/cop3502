@@ -11,7 +11,7 @@
 
 
 
-// The StackLL struct represents a Stack that uses
+// The Stack struct represents a Stack that uses
 // an array as an implementation
 typedef struct Stack_s {
     VLArray *list;
