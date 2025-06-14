@@ -26,8 +26,8 @@ void stack_destroy(Stack *);
 
 // various operations, important
 void stack_push(Stack *, int);
-int * stack_pop(Stack *);
-int * stack_peek(Stack *);
+int stack_pop(Stack *);
+int stack_peek(Stack *);
 int stack_is_empty(Stack *);
 
 
