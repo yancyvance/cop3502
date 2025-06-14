@@ -29,6 +29,7 @@ void queue_enqueue(Queue *, int);
 int queue_dequeue(Queue *);
 int queue_peek(Queue *);
 int queue_is_empty(Queue *);
+void queue_print(Queue *);
 
 
 
