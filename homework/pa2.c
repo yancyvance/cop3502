@@ -108,8 +108,9 @@ SLList * parse_string(char *str) {
 
 void print_number_recursive(SLLNode *node) {
     // TODO 2 BEGIN
-    // TODO: Recursively print the digits in a linked list.
-    // It prints all the digits on a single line.
+    // TODO: Recursively print the digits stored
+    // in a linked list. It prints all the 
+    // digits on a single line.
 
 
     
