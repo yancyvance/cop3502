@@ -15,6 +15,14 @@ int main(void) {
     // print the contents
     stack_print(stack);
     
+    // empty the stack
+    while( !stack_is_empty(stack) ) {
+        printf("%d\n", stack_pop(stack));
+    }
+    
+    // print the contents
+    stack_print(stack);
+    
     // destroy the stack
     stack_destroy(stack);
     
