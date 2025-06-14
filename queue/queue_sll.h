@@ -26,8 +26,8 @@ void queue_destroy(Queue *);
 
 // various operations, important
 void queue_enqueue(Queue *, int);
-int * queue_dequeue(Queue *);
-int * queue_peek(Queue *);
+int queue_dequeue(Queue *);
+int queue_peek(Queue *);
 int queue_is_empty(Queue *);
 
 
