@@ -57,15 +57,15 @@ int main(void) {
     char str[MAX_NUMBER_LENGTH];
     
     // iterate and process one number at a time
-    for(int j = 0; j < number_count; j++) {
+    for(int i = 0; i < number_count; i++) {
         fscanf(ifile, "%s", str);
         
-        // parse the number and conovert it
+        // parse the number and convert it
         // to a linked list
-        numbers[j] = parse_string(str);
+        numbers[i] = parse_string(str);
         
         // remove leading zeroes
-        remove_leading_zeroes( numbers[j] );
+        remove_leading_zeroes( numbers[i] );
     }
     
     // close the input file
@@ -98,7 +98,7 @@ SLList * parse_string(char *str) {
     // TODO: Implement this function to parse a 
     // numeric string (e.g., "12345") into a singly 
     // linked list, with each digit being stored in
-    // a single node
+    // a single node.
 
 
 
@@ -109,6 +109,7 @@ SLList * parse_string(char *str) {
 void print_number_recursive(SLLNode *node) {
     // TODO 2 BEGIN
     // TODO: Recursively print the digits in a linked list.
+    // It prints all the digits on a single line.
 
 
     
@@ -220,7 +221,7 @@ void display_sum(SLList **numbers, int count) {
     // helper function that gets the sum
     // of the two largest numbers in the list
     // this assumes that the list is sorted in
-    // ascending order; 
+    // ascending order
     
     // the sum is stored in a new linked list
     SLList *result = add(numbers[count-2], numbers[count-1]);
