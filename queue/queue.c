@@ -15,6 +15,14 @@ int main(void) {
     // print the contents
     queue_print(queue);
     
+    // empty the queue
+    while( !queue_is_empty(queue) ) {
+        printf("%d\n", queue_dequeue(queue));
+    }
+    
+    // print the contents
+    queue_print(queue);
+    
     // destroy the queue
     queue_destroy(queue);
     
