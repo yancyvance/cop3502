@@ -53,6 +53,8 @@ void vla_print_recursive(VLArray *list, int index);
 VLArray * vla_create_list() {
     VLArray *list = malloc( sizeof(VLArray) );
     
+    if(list == NULL) return NULL;
+    
     list->capacity = 10;
     list->size = 0;
     list->array = malloc( sizeof(int) * list->capacity );
@@ -74,11 +76,17 @@ void vla_destroy_list(VLArray *list) {
 // various operations, important
 void vla_print_list(VLArray *list) {
     if( vla_is_empty(list) ) {
-        printf("List Empty!");
+        //printf("List Empty!");
+        printf("[]");
     }
     else {
-        for(int i = 0; i < list->size; i++)
-            printf("%d ", list->array[i]);
+        printf("[");
+        for(int i = 0; i < list->size; i++) {
+            printf("%d", list->array[i]);
+            if(i < list->size-1)
+                printf(", ");
+        }
+        printf("]");
     }
     
     printf("\n");
@@ -186,7 +194,7 @@ int vla_remove_tail(VLArray *list) {
 
 void vla_grow_list(VLArray *list) {
     // debugging purposes
-    printf("Growing from %d to %d!\n", list->capacity, list->capacity*2);
+    //printf("Growing from %d to %d!\n", list->capacity, list->capacity*2);
     
     // compute new capacity (double of existing)
     list->capacity = list->capacity * 2;
