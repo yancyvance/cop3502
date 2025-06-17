@@ -43,11 +43,17 @@ void sll_add_tail(SLList *, int);
 void sll_add_head(SLList *, int);
 SLLNode * sll_remove_tail(SLList *);
 SLLNode * sll_remove_head(SLList *);
+SLLNode * sll_delete(SLList *list, int query);
 
 // various operations, practice
-void sll_insert_at(SLList *, int, int);
-SLLNode * sll_remove_at(SLList *, int);
-SLLNode * sll_get_element_at(SLList *, int);
+void sll_insert_at(SLList *list, int index, int value);
+SLLNode * sll_remove_at(SLList *list, int index);
+SLLNode * sll_get_element_at(SLList *list, int index);
+
+// various operations, recursive
+void sll_print_recursive(SLLNode *node);
+void sll_add_recursive(SLLNode **node_ref, int value);
+SLLNode * sll_delete_recursive(SLLNode **node_ref, int query);
 
 
 
@@ -274,6 +280,89 @@ SLLNode * sll_remove_head(SLList *list) {
     
     // fallback return
     return NULL;
+}
+
+SLLNode * sll_delete(SLList *list, int query) {
+    // if list is empty
+    if(list->head == NULL) return NULL;
+    
+    SLLNode *tmp;
+    
+    // case 1: head matches
+    if(list->head->data == query) {
+        tmp = list->head;
+        list->head = list->head->next;
+        tmp->next = NULL;
+        return tmp;
+    }
+    
+    // case 2: non-head
+    SLLNode *ptr = list->head;
+    
+    // traverse the list and see
+    // if the current node's data
+    // is what we are looking for
+    while( ptr != NULL ) {
+        if(ptr->next->data == query) {
+            tmp = ptr->next;
+            ptr->next = ptr->next->next;
+            tmp->next = NULL;
+            return tmp;
+        }
+        
+        ptr = ptr->next;
+    }
+    
+    return NULL;    
+}
+
+void sll_print_recursive(SLLNode *node) {
+    // if either empty or reached the end
+    if(node == NULL) {
+        printf("NULL\n");
+        return;
+    }
+    
+    // print
+    printf("%d -> ", node->data);
+    
+    // go to the next node
+    sll_print_recursive(node->next);
+}
+
+void sll_add_recursive(SLLNode **node_ref, int value) {
+    // if either empty or reached the end
+    if(*node_ref == NULL) {
+        // create a new node
+        SLLNode *tmp = sll_create_node(value);
+        // update the value of this current variable
+        *node_ref = tmp;
+        return;
+    }        
+    
+    // Recurse on the rest of the list
+    sll_add_recursive(&((*node_ref)->next), value);
+}
+
+SLLNode * sll_delete_recursive(SLLNode **node_ref, int query) {
+    // if either empty or reached the end
+    if(*node_ref == NULL) {
+        return NULL;
+    }
+
+    // if this node has the value we are looking for
+    if( (*node_ref)->data == query ) {
+        // remember reference to this node first
+        SLLNode *tmp = *node_ref;
+        // unlink this node
+        *node_ref = (*node_ref)->next;
+        // for safety
+        tmp->next = NULL;
+        return tmp;
+    }
+
+    // Recurse on the rest of the list
+    return sll_delete_recursive(&(*node_ref)->next, query);
 }
 
 
