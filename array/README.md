@@ -1,4 +1,4 @@
-# Variable-Length Array Implementation
+# Variable-Length Array
 
 This implementation of a variable-length array creates an array with an initial capacity of 10. It also grows by doubling its capacity whenever it runs out of space.
 
