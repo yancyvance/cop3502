@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "sll.h"
 
-// Test File for Singly Linked List.
+// Sample Test Program for Singly Linked List.
 
 int main(void) { 
     // create a list
@@ -34,6 +34,9 @@ int main(void) {
     
     for(int i = 1; i <= 15; i++)
         sll_add_tail(list, i);
+        
+    // print the list
+    sll_print_list(list);
     
     while( !sll_is_empty(list) ) {
         sll_destroy_node( sll_remove_tail(list) );
