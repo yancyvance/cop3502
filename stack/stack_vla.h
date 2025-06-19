@@ -47,7 +47,7 @@ Stack * stack_create() {
     
     // some minor tweak that prevents
     // our array from growing
-    stack->list->can_grow = 0;
+    //stack->list->can_grow = 0;    // TODO: future update
     
     return stack;
 }
