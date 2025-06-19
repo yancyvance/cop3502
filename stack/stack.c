@@ -2,7 +2,7 @@
 #include "stack_sll.h"
 //#include "stack_vla.h"
 
-// Sample C Implementation of a Stack.
+// Sample Test Program for Stack.
 // Switch the back-end implementation by
 // commenting one and un-commenting the
 // other H file above.
