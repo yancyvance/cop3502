@@ -15,7 +15,8 @@
 typedef struct VLArray_s {
     int *array;      // Pointer to the dynamically allocated array of integers
     int size;        // Current number of elements in the array
-    int capacity;    // Maximum number of elements that can be stored before resizing
+    int capacity;    // Maximum number of elements that can be stored before resizing (default: 10)
+    int can_grow;    // Flag whether this array can grow or not (default: yes)
 } VLArray;
 
 
@@ -58,6 +59,21 @@ VLArray * vla_create_list() {
     list->capacity = 10;
     list->size = 0;
     list->array = malloc( sizeof(int) * list->capacity );
+    list->can_grow = 1;
+    
+    return list;
+}
+
+VLArray * vla_create_list_capacity(int capacity) {
+    // allows to specify the capacity of this list
+    VLArray *list = malloc( sizeof(VLArray) );
+    
+    if(list == NULL) return NULL;
+    
+    list->capacity = capacity;
+    list->size = 0;
+    list->array = malloc( sizeof(int) * list->capacity );
+    list->can_grow = 1;
     
     return list;
 }
@@ -109,10 +125,18 @@ int vla_get_size(VLArray *list) {
 }
 
 void vla_insert_at(VLArray *list, int index, int value) {
+    // check if the index is valid
     if( index >= 0 && index <= list->size ) {
-        // check if need to grow
-        if( list->size == list->capacity )
-            vla_grow_list(list);
+        // check if the array is already full
+        // and if it needs to grow
+        if( list->size == list->capacity ) {
+            // check if this array is allowed
+            // to grow, if not; disregard new element
+            if( list->can_grow )
+                vla_grow_list(list);
+            else
+                return;     // prevent from adding
+        }
             
         // start shifting to the right to make space
         for(int i = list->size; i > index; i--) {
@@ -166,30 +190,18 @@ int vla_delete(VLArray *list, int query) {
 }
 
 void vla_add_tail(VLArray *list, int value) {
-    // check if need to grow
-    if( list->size == list->capacity )
-        vla_grow_list(list);
-        
-    // add to the first available spot
-    list->array[list->size] = value;
-    
-    // update size
-    list->size++;
+    // add to the first available slot on
+    // the right side of the array (tail-end)
+    // in short, insert at the position
+    // where index = array's current size
+    vla_insert_at( list, list->size, value );
 }
 
 int vla_remove_tail(VLArray *list) {
-    // check if empty
-    if( !vla_is_empty(list) ) {
-        // remember the last value
-        int tmp = list->array[list->size-1];
-        // decrement the size
-        list->size--;
-        
-        return tmp;
-    }
-    
-    // random flag to indicate empty
-    return -1;
+    // remove the right-most element of the array
+    // in short, remove element at the position
+    // where index = array's current size - 1
+    return vla_remove_at( list, list->size-1 );
 }
 
 void vla_grow_list(VLArray *list) {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "vla.h"
 
-// Sample C Implementation of a Variable Length Array.
+// Sample Test Program for Variable Length Array.
 
 int main(void) {
     // create a list
