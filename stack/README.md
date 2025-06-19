@@ -1,4 +1,4 @@
-# Stack Implementation
+# Stack
 
 This stack implementation has two backend implementations. One is using a Singly Linked List while the other is a Variable-Length Array.
 
