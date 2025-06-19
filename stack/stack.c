@@ -3,6 +3,11 @@
 //#include "stack_vla.h"
 
 // Sample C Implementation of a Stack.
+// Switch the back-end implementation by
+// commenting one and un-commenting the
+// other H file above.
+//      SLL - Singly Linked List
+//      VLA - Variable Length Array
 
 int main(void) {
     // create a stack
