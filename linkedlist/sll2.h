@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Sample C Implementation of a Singly Linked List.
+// Sample C Implementation of a Singly Linked List (head and tail).
 
 
 
@@ -18,9 +18,11 @@ typedef struct SLLNode_s {
 } SLLNode;
 
 // The SLList struct represents a Singly Linked 
-// List that keeps track of the first node (head).
+// List that keeps track of the first node (head)
+// and the last node (tail).
 typedef struct SLList_s {
     SLLNode *head;
+    SLLNode *tail;
 } SLList;
 
 
@@ -84,6 +86,7 @@ SLList * sll_create_list() {
     
     // initialize the fields
     list->head = NULL;
+    list->tail = NULL;
     
     return list;
 }
@@ -160,8 +163,11 @@ void sll_add_tail(SLList *list, int value) {
     if( sll_is_empty(list) ) {
         // create a node and make it the head
         list->head = sll_create_node(value);
+        // the tail is the same as the head
+        list->tail = list->head;
     }
     else {
+        /*
         SLLNode *ptr = list->head;
         
         // traverse through the list
@@ -184,6 +190,14 @@ void sll_add_tail(SLList *list, int value) {
             // the next node
             ptr = ptr->next;
         }
+        */
+        
+        // the current tail will have
+        // a new next node
+        list->tail->next = sll_create_node(value);
+        
+        // update the tail of the list
+        list->tail = list->tail->next;
     }
 }
 
@@ -192,6 +206,8 @@ void sll_add_head(SLList *list, int value) {
     if( sll_is_empty(list) ) {
         // create a node and make it the head
         list->head = sll_create_node(value);
+        // the tail is the same as the head
+        list->tail = list->head;
     }
     else {
         // create a node and set its next
@@ -218,6 +234,9 @@ SLLNode * sll_remove_tail(SLList *list) {
             // inform the list to not have
             // a head anymore
             list->head = NULL;
+            
+            // the same goes for tail
+            list->tail = NULL;
             
             // return the reference
             return tmp;
@@ -248,6 +267,9 @@ SLLNode * sll_remove_tail(SLList *list) {
                     // have any next node anymore
                     ptr->next = NULL;
                     
+                    // update the tail of the list
+                    list->tail = ptr;
+                    
                     // return the reference
                     return tmp;
                 }
@@ -275,6 +297,12 @@ SLLNode * sll_remove_head(SLList *list) {
         // and (2) there is more than one 
         // element in the list
         list->head = list->head->next;
+        
+        // if head ends up being NULL
+        // then that means, tail should
+        // as well because only one element
+        if(list->head == NULL)
+            list->tail = NULL;
         
         // return a reference to the
         // node that was just removed
