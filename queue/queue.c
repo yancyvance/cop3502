@@ -2,7 +2,12 @@
 #include "queue_sll.h"
 //#include "queue_vla.h"
 
-// Sample C Implementation of a Queue.
+// Sample Test Program for Queue.
+// Switch the back-end implementation by
+// commenting one and un-commenting the
+// other H file above.
+//      SLL - Singly Linked List
+//      VLA - Variable Length Array
 
 int main(void) {
     // create a queue
