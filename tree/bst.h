@@ -28,23 +28,31 @@ typedef struct BSTree_s {
 // function prototypes defined here
 
 // create and destroy nodes
-BSTNode * bst_create_node(int);
-void bst_destroy_node(BSTNode *);
+BSTNode * bst_create_node(int value);
+void bst_destroy_node(BSTNode *node);
 
 // create and destroy binary search tree
 BSTree * bst_create();
-void bst_destroy(BSTree *);
+void bst_destroy(BSTree *tree);
 
 // various operations, important
-int bst_search(BSTree *, int);
-int bst_is_empty(BSTree *);
-void bst_insert(BSTree *, int);
-BSTNode * bst_remove(BSTree *, int);
+int bst_is_empty(BSTree *tree);
+int bst_search(BSTree *tree, int query);
+void bst_insert(BSTree *tree, int value);
+BSTNode * bst_remove(BSTree *tree, int query);
 
 // various operations, practice
-void bst_inorder(BSTNode *);
-void bst_preorder(BSTNode *);
-void bst_postorder(BSTNode *);
+void bst_inorder(BSTree *tree);
+void bst_preorder(BSTree *tree);
+void bst_postorder(BSTree *tree);
+
+// various operations, recursive
+void bst_inorder_recursive(BSTNode *node);
+void bst_preorder_recursive(BSTNode *node);
+void bst_postorder_recursive(BSTNode *node);
+int bst_search_recursive(BSTNode *node, int query);
+void bst_insert_recursive(BSTNode **node, int value);
+BSTNode * bst_remove_recursive(BSTNode **node, int query);
 
 
 
