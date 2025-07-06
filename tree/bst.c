@@ -10,12 +10,12 @@ int main(void) {
     // perform some operations here
     // insert some values
     bst_insert(tree, 50);
-    bst_insert(tree, 25);
-    bst_insert(tree, 75);
-    bst_insert(tree, 10);
-    bst_insert(tree, 40);
-    bst_insert(tree, 60);
+    bst_insert(tree, 30);
     bst_insert(tree, 100);
+    bst_insert(tree, 90);
+    bst_insert(tree, 80);
+    bst_insert(tree, 70);
+    bst_insert(tree, 60);
     
     // search
     printf("Is 60 in the BST? %d\n", bst_search(tree, 60));
@@ -25,6 +25,12 @@ int main(void) {
     bst_inorder(tree);
     bst_preorder(tree);
     bst_postorder(tree);
+    
+    // insert again
+    bst_insert(tree, 55);
+    
+    // print contents
+    bst_inorder(tree);
     
     
     
