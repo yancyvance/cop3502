@@ -131,6 +131,9 @@ void display_info(BSTree *tree, int level) {
         solve_mystery(tree->root, level, str, &pos);
         str[pos] = '\n';
         printf("%s", str);
+        
+        // deallocate the string
+        free(str);
     }
     else {
         // no nodes at this level
