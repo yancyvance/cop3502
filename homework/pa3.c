@@ -122,14 +122,14 @@ void display_info(BSTree *tree, int level) {
     printf("Mystery Word: ");
     
     // check if there are nodes in the level
-    if(nLevel > 0)
+    if(nLevel > 0) {
         // build a dynamic string that will hold
         // the mystery word
         char *str = malloc( sizeof(char) * (nLevel+1) );
         
         int pos = 0;
         solve_mystery(tree->root, level, str, &pos);
-        str[pos] = '\n';
+        str[pos] = '\0';        // null terminate the string
         printf("%s", str);
         
         // deallocate the string
