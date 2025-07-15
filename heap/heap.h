@@ -103,6 +103,21 @@ void heap_heapify(MinHeap *heap, int idx) {
     }
 }
 
+void heap_heapify_up(MinHeap *heap, int idx) {
+    // get the parent index
+    int parent_idx = heap_parent_index(heap, idx);
+    
+    // if value at parent is smaller than at idx
+    if( parent_idx != -1 && heap->array[parent_idx] < heap->array[idx] ) {
+        // do a swap
+        heap_swap( &(heap->array[idx]), &(heap->array[parent_idx]) );
+        
+        // and perform a heapify at the
+        // new location
+        heap_heapify_up( heap, parent_idx );
+    }
+}
+
 void heap_print(MinHeap *heap) {
     for(int i = 0; i < heap->size; i++) {
         printf("%d, ", heap->array[i]);
