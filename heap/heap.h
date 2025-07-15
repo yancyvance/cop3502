@@ -33,9 +33,9 @@ void heap_print(MinHeap *heap);
 void heap_sort(MinHeap *heap);
 
 // helper functions
-int heap_left_index(int idx);
-int heap_right_index(int idx);
-int heap_parent_index(int idx);
+int heap_left_index(MinHeap *heap, int idx);
+int heap_right_index(MinHeap *heap, int idx);
+int heap_parent_index(MinHeap *heap, int idx);
 void heap_swap(int *a, int *b);
 int * duplicate_array(int *arr, int size);
 
