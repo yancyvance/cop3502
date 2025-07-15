@@ -32,6 +32,7 @@ int pqueue_is_empty(PriorityQueue *pqueue);
 void pqueue_print(PriorityQueue *pqueue);
 int pqueue_is_full(PriorityQueue *pqueue);
 void pqueue_decrease_key(PriorityQueue *pqueue, int idx, int val);
+void pqueue_delete(PriorityQueue *pqueue, int idx);
 
 
 
