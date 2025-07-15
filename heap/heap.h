@@ -162,7 +162,7 @@ void heap_sort(int *arr, int size) {
     for(int i = 0; i < size; i++)
         arr[i] = heap->array[size-1-i];
         
-    // destory the heap
+    // destroy the heap
     heap_destroy(heap);
 }
 

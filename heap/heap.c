@@ -13,26 +13,27 @@ int main(void) {
     // perform some operations here
     heap_print(heap);
     
-
-    
     // destroy the heap
     heap_destroy(heap);
     
     
+    // heap sort demonstration
+    int arr[] = {50, 10, 20, 60, 30};
+    int M = 5;
     
     // print before
-    for(int i = 0; i < N; i++)
-        printf("%d, ", nums[i]);
+    for(int i = 0; i < M; i++)
+        printf("%d, ", arr[i]);
     printf("\n");
     
     // do a heapsort
-    heap_sort(nums, N);
+    heap_sort(arr, M);
     
     // print after
-    for(int i = 0; i < N; i++)
-        printf("%d, ", nums[i]);
+    for(int i = 0; i < M; i++)
+        printf("%d, ", arr[i]);
     printf("\n");
     
-    
+
     return 0;
 }
