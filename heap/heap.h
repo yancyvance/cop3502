@@ -23,10 +23,10 @@ typedef struct MinHeap_s {
 
 // create and destroy binary min heap
 MinHeap * heap_create(int capacity);
+MinHeap * heap_build(int *arr, int size);
 void heap_destroy(MinHeap *heap);
 
 // various operations, important
-void heap_build(MinHeap *heap, int *arr, int size);
 void heap_heapify(MinHeap *heap, int idx);
 void heap_heapify_up(MinHeap *heap, int idx);
 void heap_print(MinHeap *heap);
