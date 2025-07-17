@@ -108,7 +108,7 @@ void heap_heapify_up(MinHeap *heap, int idx) {
     int parent_idx = heap_parent_index(heap, idx);
     
     // if value at parent is smaller than at idx
-    if( parent_idx != -1 && heap->array[parent_idx] < heap->array[idx] ) {
+    if( parent_idx != -1 && heap->array[idx] < heap->array[parent_idx] ) {
         // do a swap
         heap_swap( &(heap->array[idx]), &(heap->array[parent_idx]) );
         
