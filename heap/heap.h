@@ -119,10 +119,13 @@ void heap_heapify_up(MinHeap *heap, int idx) {
 }
 
 void heap_print(MinHeap *heap) {
+    printf("[");
     for(int i = 0; i < heap->size; i++) {
-        printf("%d, ", heap->array[i]);
+        if(i > 0)
+            printf(", ");
+        printf("%d", heap->array[i]);
     }
-    printf("\n");
+    printf("]\n");
 }
 
 int heap_left_index(MinHeap *heap, int idx) {
