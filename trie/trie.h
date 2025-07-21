@@ -50,6 +50,10 @@ int trie_is_marked(TrieNode *node);
 int trie_char_to_index(char alpha);
 char trie_index_to_char(int idx);
 
+// application
+int trie_count(Trie *trie);
+int trie_count_recursive(TrieNode *node);
+
 
 
 // function definitions
@@ -219,6 +223,26 @@ int trie_is_marked(TrieNode *node) {
 
 int trie_char_to_index(char alpha) {
     return (int)(alpha-'a');
+}
+
+int trie_count(Trie *trie) {
+    // call the recursive function and
+    // pass the root of the trie
+    return trie_count_recursive(trie->root);
+}
+
+int trie_count_recursive(TrieNode *node) {
+    if(node == NULL)
+        return 0;
+        
+    // keep track how many marked nodes
+    // are found
+    int count = node->is_end_of_word;
+    
+    for(int i = 0; i < MAX_CHILD_COUNT; i++)
+        count = count + trie_count_recursive( node->children[i] );
+        
+    return count;
 }
 
 

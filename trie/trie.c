@@ -16,6 +16,9 @@ int main(void) {
     // insert the following strings
     for(int i = 0; i < WORD_COUNT; i++)
         trie_insert(trie, words[i]);
+        
+    // print word count
+    printf("Word Count: %d\n", trie_count(trie));
     
     // do a lookup
     printf("%d\n", trie_search(trie, "hi"));
@@ -26,6 +29,9 @@ int main(void) {
 
     // remove string
     trie_remove(trie, "hopefully");
+    
+    // print word count
+    printf("Word Count: %d\n", trie_count(trie));
 
     // do a lookup
     printf("%d\n", trie_search(trie, "hopeful"));
@@ -36,6 +42,9 @@ int main(void) {
         trie_remove(trie, words[i]);
     
     printf("%d\n", trie_search(trie, "hopeful"));
+    
+    // print word count
+    printf("Word Count: %d\n", trie_count(trie));
 
     // deallocate trie
     trie_destroy(trie);
