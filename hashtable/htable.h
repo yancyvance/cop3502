@@ -207,10 +207,10 @@ void htable_print(HashTable *table) {
         // change representation
         switch( table->array[i] ) {
             case NULL_MARKER:
-                printf("NULL");
+                printf(" ");
                 break;
             case DELETED_MARKER:
-                printf("\\");
+                printf("*");
                 break;
             default:
                 printf("%d", table->array[i]);
