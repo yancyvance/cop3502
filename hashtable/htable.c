@@ -1,11 +1,15 @@
 #include <stdio.h>
-#include "htable_sll.h"
+#include "htable_sll.h"         // separate chaining
+//#include "htable.h"             // probing (linear and quadratic)
 
 // Sample Test Program for Hash Table.
 
 int main(void) {
     // create a hash table
     HashTable *table = htable_create(7);
+    
+    // works only for probing (to set to quadratic)
+    //table->is_linear_probing = 0;
     
     // print the table first
     htable_print(table);

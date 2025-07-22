@@ -14,8 +14,9 @@
 // The HashTable struct represents a HashTable 
 // that keeps track of its size and capacity.
 // It also keeps track of an internal array
-// of pointers to a SLList struct, where
-// the size of the array is same as capacity.
+// of pointers to a SLList struct, where the size
+// the size of the array is the same as the 
+// capacity of the HashTable.
 typedef struct HashTable_s {
     SLList **array;
     int size;
@@ -124,6 +125,7 @@ int htable_hash(HashTable *table, int key) {
 }
 
 void htable_print(HashTable *table) {
+    printf("Separate Chaining\n");
     printf("Index | Contents\n");
     printf("------|---------\n");
     
