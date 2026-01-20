@@ -25,6 +25,8 @@ void song_print(Song *s);
 Song *playlist_find_longest_song(Playlist *list);
 
 
+// DO NOT MODIFY THIS PORTION OF THE MAIN FUNCTION
+#ifndef MAIN_FUNCTION
 int main(void) {
     FILE *ifile = fopen(INPUT_FILE, "r");
     
@@ -36,7 +38,7 @@ int main(void) {
     Playlist p;
     
     // initialize the playlist
-    playlist_init( &p, 101 );
+    playlist_init( &p, 101 );           // 101 here is an arbitrary ID value
     
     // Read 5 songs from a file
     
@@ -71,38 +73,62 @@ int main(void) {
 
     return 0;
 }
+#endif
+// DO NOT MODIFY THIS PORTION OF THE MAIN FUNCTION
 
+
+// Function Definitions
 void playlist_init(Playlist *list, int id) {
+    // TODO: Complete this function
+    // TODO 1 BEGIN
 
 
 
-    
+
+
+    // TODO 1 END
 }
 
 void playlist_print(Playlist *list) {
+    // TODO: Complete this function
+    // TODO 2 BEGIN
 
 
 
 
+
+    // TODO 2 END
 }
 
 void playlist_add_song(Playlist *list, int s_id, char *s_title, int s_len) {
+    // TODO: Complete this function
+    // TODO 3 BEGIN
 
 
 
 
+
+    // TODO 3 END
 }
 
 Song *playlist_find_longest_song(Playlist *list) {
+    // TODO: Complete this function
+    // TODO 4 BEGIN
 
 
 
 
+
+    // TODO 4 END
 }
 
 void song_print(Song *s) {
+    // TODO: Complete this function
+    // TODO 5 BEGIN
 
 
 
 
+
+    // TODO 5 END
 }
