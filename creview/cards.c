@@ -48,7 +48,11 @@ int main(void) {
     // TODO 7: What if the number of cards is only known during runtime
 
 
-    // TODO 8: What if we have multiple players?
+    // TODO 8: Read the information from a file
+
+
+    // TODO 9: What if we have multiple players?
+    
     
     
     return 0;
