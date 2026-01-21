@@ -33,8 +33,9 @@ int main(void) {
     Card hand[MAX_CARDS];
     
     for(int i = 0; i < MAX_CARDS; i++) {
+        // the card information is provided by user input
         scanf("%d", &hand[i].value );
-        scanf("%s", hand[i].suit);
+        scanf("%s", hand[i].suit);      // assumes no whitespaces
         
         // the following have all the same behavior
         //print_card2( &hand[i] );
