@@ -45,10 +45,10 @@ int main(void) {
     
     print_hand( hand, MAX_CARDS );
     
-    // TODO 7: What if the number of cards is only known during runtime
+    // TODO 7: Read the information from a file
 
 
-    // TODO 8: Read the information from a file
+    // TODO 8: What if the number of cards is only known during runtime
 
 
     // TODO 9: What if we have multiple players?
