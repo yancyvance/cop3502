@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #define MAX_LEN 101
+#define MAX_CARDS 3
 
 // Write a program that keeps track of the cards held by a single player.
 
@@ -13,6 +14,7 @@ typedef struct Card_s {
 // Function Prototypes
 void print_card(Card c);
 void print_card2(Card *c);
+void print_hand(Card *c, int size);
 
 
 int main(void) {
@@ -28,10 +30,24 @@ int main(void) {
     
     
     // TODO 5: Represent a single player's hand holding 3 cards
-
-
-    // TODO 6: Define a function that prints the cards held
+    Card hand[MAX_CARDS];
     
+    for(int i = 0; i < MAX_CARDS; i++) {
+        scanf("%d", &hand[i].value );
+        scanf("%s", hand[i].suit);
+        
+        // the following have all the same behavior
+        //print_card2( &hand[i] );
+        //print_card2( hand+i );
+        //print_card( hand[i] );
+    }
+    
+    print_hand( hand, MAX_CARDS );
+    
+    // TODO 7: What if the number of cards is only known during runtime
+
+
+    // TODO 8: What if we have multiple players?
     
     
     return 0;
@@ -46,4 +62,12 @@ void print_card(Card c) {
 void print_card2(Card *c) {
     //printf("%d %s\n", (*c).value, (*c).suit);
     printf("%d %s\n", c->value, c->suit);   // same with above
+}
+
+// TODO 6: Define a function that prints the cards held
+void print_hand(Card *c, int size) {
+    for(int i = 0; i < size; i++) {
+        print_card2( c+i );
+        //print_card2( &c[i] );
+    }
 }
