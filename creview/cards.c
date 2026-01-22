@@ -32,6 +32,7 @@ int main(void) {
     // TODO 5: Represent a single player's hand holding 3 cards
     Card hand[MAX_CARDS];
     
+    /*
     for(int i = 0; i < MAX_CARDS; i++) {
         // the card information is provided by user input
         scanf("%d", &hand[i].value );
@@ -42,11 +43,32 @@ int main(void) {
         //print_card2( hand+i );
         //print_card( hand[i] );
     }
+    */
+    
+    // TODO 7: Read the information from a file
+    // assumes that cards.txt exists in the same directory
+    // where the executable file will be located (i.e., relative path)
+    FILE *ifile = fopen("cards.txt", "r");
+    
+    // safety guard
+    if( ifile == NULL ) {
+        printf("Cannot open file!\n");
+        return 1;
+    }
+    
+    // notice how this is very similar to the one above?
+    for(int i = 0; i < MAX_CARDS; i++) {
+        // the card information is read from the file
+        fscanf(ifile, "%d", &hand[i].value );
+        fscanf(ifile, "%s", hand[i].suit);      // assumes no whitespaces
+    }
+    
+    // close the file afterward
+    fclose(ifile);
+    
     
     print_hand( hand, MAX_CARDS );
     
-    // TODO 7: Read the information from a file
-
 
     // TODO 8: What if the number of cards is only known during runtime
 
