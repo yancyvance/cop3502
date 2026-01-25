@@ -1,0 +1,30 @@
+5
+Ragdoll
+Maincoone
+Siamese
+Tuxedo
+Taby
+3
+12 5 10 6 4 
+18 17 13 6 9
+0 5 3 20 5
+Polterland 4
+Charlie 12 52.55 Ragdoll
+Caesar 2 512.2 Siamese
+Cleo 4 8.6 Tuxedo
+Patra 4 11.15 Ragdoll
+Auburndale 2 
+Coco 14 23.2 Ragdoll
+Channel 13 18.3 Ragdoll
+Narnia 1
+Sad 18 92.00 Taby
+9
+1 Ragdoll
+2 1 Charlie
+2 0 Charlie
+1 Ragdoll
+3 Caesar Auburndale
+3 Sad Narnia
+3 Coco Narnia
+2 0 Cleo
+1 Tuxedo
