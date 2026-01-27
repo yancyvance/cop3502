@@ -105,7 +105,7 @@ char **remove_fruit(char **list, int *size, char *query) {
     
     // If not found, do not make any modifications.
     // Simply return the original list.
-    if( idx == -1) return list;
+    if( idx == -1 ) return list;
     
     // Remember the dynamic string as it will be overwritten
     char *tmp = list[idx];
