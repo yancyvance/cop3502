@@ -10,6 +10,7 @@ char **create_and_populate_list(FILE *ifile, int *size);
 void destroy_list(char **list, int size);
 int index_of(char **list, int size, char *query);
 void search_list(FILE *ifile, char **list, int size);
+char **remove_fruit(char **list, int *size, char *query);
 
 
 // BEGIN: DO NOT MODIFY THE MAIN FUNCTION
@@ -27,6 +28,9 @@ int main(void) {
     // Create a list of words (array of strings)
     int N;
     char **fruits = create_and_populate_list( ifile, &N );   // notice &count
+    
+    // Uncomment for Guide Question 4
+    //fruits = remove_fruit( fruits, &N, "apple" );
     
     // Perform some operations on the list
     search_list( ifile, fruits, N );
@@ -86,4 +90,43 @@ void search_list(FILE *ifile, char **list, int size) {
 
 
     // TODO 4 END
+}
+
+char **remove_fruit(char **list, int *size, char *query) {
+    // Do a lookup if the query exists
+    int idx = index_of(list, *size, query);
+    
+    // If not found, do not make any modifications.
+    // Simply return the original list.
+    if( idx == -1) return list;
+    
+    // Remember the dynamic string as it will be overwritten
+    char *tmp = list[idx];
+    
+    // Remove the fruit by shifting all the
+    // elements to the left beginning at idx+1
+    for(int i = idx; i < (*size)-1; i++) {     // notice the condition
+        list[i] = list[i+1];    // move to the left
+    }
+    
+    // Design choice: We deallocate the deleted dynamic string here
+    free(tmp);
+
+    // Design choice: We resize the array to lose one space
+    int new_size = (*size) - 1;
+    char **new_list = realloc( list, sizeof(char *) * new_size );
+    
+    // Update the *size parameter
+    *size = new_size;
+    
+    // If realloc is successful, then we return the new list
+    if( new_list != NULL ) {        
+        // no need to deallocate the old list because realloc()
+        // does this for you if it is successful
+        return new_list;
+    }
+    
+    // If realloc failed, we return the reference to the old list.
+    // However, we already have made the shift.
+    return list;
 }
