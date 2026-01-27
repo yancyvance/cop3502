@@ -12,7 +12,7 @@ int index_of(char **list, int size, char *query);
 void search_list(FILE *ifile, char **list, int size);
 
 
-// DO NOT MODIFY THIS PORTION OF THE MAIN FUNCTION
+// BEGIN: DO NOT MODIFY THE MAIN FUNCTION
 #ifndef MAIN_FUNCTION
 int main(void) {
     // Open the file
@@ -25,14 +25,14 @@ int main(void) {
     }
     
     // Create a list of words (array of strings)
-    int count;
-    char **fruits = create_and_populate_list( ifile, &count );   // notice &count
+    int N;
+    char **fruits = create_and_populate_list( ifile, &N );   // notice &count
     
     // Perform some operations on the list
-    search_list( ifile, fruits, count );
+    search_list( ifile, fruits, N );
     
     // Destroy the list
-    destroy_list( fruits, count );   // notice the need to pass the size of the list
+    destroy_list( fruits, N );   // notice the need to pass the size of the list
     
     // Close the file
     fclose(ifile);
@@ -40,7 +40,7 @@ int main(void) {
     return 0;
 }
 #endif
-// DO NOT MODIFY THIS PORTION OF THE MAIN FUNCTION
+// END: DO NOT MODIFY THE MAIN FUNCTION
 
 
 // Function Definitions
