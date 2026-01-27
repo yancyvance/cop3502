@@ -93,6 +93,9 @@ void search_list(FILE *ifile, char **list, int size) {
 }
 
 char **remove_fruit(char **list, int *size, char *query) {
+    // DO NOT MODIFY THIS FUNCTION
+    // You need to understand what this function is doing
+    
     // Do a lookup if the query exists
     int idx = index_of(list, *size, query);
     
