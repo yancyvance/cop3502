@@ -24,6 +24,10 @@ int main(void) {
         printf("File Does Not Exist!\n");
         return 1;
     }
+
+    // The reading of the contents of the file will be done
+    // across several functions, that's why we are passing
+    // ifile to those functions
     
     // Create a list of words (array of strings)
     int N;
