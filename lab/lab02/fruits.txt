@@ -2,6 +2,9 @@
 apple
 banana
 cherry
-2
+5
+apple
 cherry
 watermelon
+Banana
+banana
