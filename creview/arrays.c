@@ -7,7 +7,7 @@
 
 // TODO 3: Define a function that prints the numbers
 
-// TODO 4: Define the constructor andn destructor functions
+// TODO 4: Define the constructor and destructor functions
 
 // TODO 5: Ask the user to indicate the dimensions
 
