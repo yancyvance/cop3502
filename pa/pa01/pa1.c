@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INPUT_FILE "input.txt"
+#define INPUT_FILE "store.txt"
 
 /*
     COP 3502C PA1
