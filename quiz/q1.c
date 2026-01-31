@@ -25,6 +25,7 @@
 */
 
 
+#ifdef T1
 Point **transform_points(int *arr1, int *arr2, int size) {
     // TODO: Complete this function
     // TODO 1 BEGIN
@@ -35,8 +36,10 @@ Point **transform_points(int *arr1, int *arr2, int size) {
 
     // TODO 1 END
 }
+#endif
 
 
+#ifdef T2
 Student *create_student(char *name, char courses[][101], int count, int year) {
     // TODO: Complete this function
     // TODO 2 BEGIN
@@ -47,8 +50,10 @@ Student *create_student(char *name, char courses[][101], int count, int year) {
 
     // TODO 2 END
 }
+#endif
 
 
+#ifdef T3
 void destroy_student(Student *s) {
     // TODO: Complete this function
     // TODO 3 BEGIN
@@ -59,8 +64,10 @@ void destroy_student(Student *s) {
 
     // TODO 3 END
 }
+#endif
 
 
+#ifdef T4
 Account *merge_accounts(const Account *a1, const Account *a2) {
     // TODO: Complete this function
     // TODO 4 BEGIN
@@ -71,3 +78,4 @@ Account *merge_accounts(const Account *a1, const Account *a2) {
 
     // TODO 4 END
 }
+#endif
