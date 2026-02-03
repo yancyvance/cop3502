@@ -35,8 +35,10 @@ void song_print(const Song *s);
 // BEGIN: DO NOT MODIFY THE MAIN FUNCTION
 #ifndef MAIN_FUNCTION
 int main(void) {
+    // Open the file
     FILE *ifile = fopen(INPUT_FILE, "r");
     
+    // Safeguard in the event the file cannot be opened
     if( ifile == NULL ) {
         printf("File Does Not Exist!\n");
         return 1;
@@ -45,7 +47,7 @@ int main(void) {
     // Keep track of the song count
     int song_count;
     
-    // dynamically allocate an array of songs
+    // Dynamically allocate an array of songs
     Song *songs = read_songs(ifile, &song_count);
     
     // Close the file
