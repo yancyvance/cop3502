@@ -87,7 +87,7 @@ void permutation_init(const Song *songs, int n) {
 }
 
 void permutation_fill(Song *solution, int size, int pos,
-                      const Song *actual, int *is_used); {
+                      const Song *actual, int *is_used) {
     // TODO: Complete this function
     // TODO 2 BEGIN
     
