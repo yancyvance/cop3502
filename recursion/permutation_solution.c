@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Write a program that enumerates all permutation of 4 distinct symbols.
+// Write a program that enumerates all permutation of 4 distinct symbols
+// where the first number is lesser than the last number.
 
 // Function Prototypes
 void solve(int *arr, int n, int p, int *actual, int *is_used);
