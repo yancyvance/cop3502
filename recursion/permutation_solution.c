@@ -94,7 +94,7 @@ int check_solution(int *arr, int size) {
     // is a correct solution to the problem; otherwise
     // it returns 0
     
-    // Final decision, is first number lesser than
+    // Final decision, is the first number lesser than
     // the last number?
     return arr[0] < arr[size-1];
 }
