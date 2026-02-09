@@ -37,8 +37,24 @@ void sll_insert_at(int pos, int val);
 
 
 int main(void) {
+    // Dynamically create a linked list
+    SLList *list = sll_create_list();
     
+    // Populate the linked list
+    list->head = sll_create_node(10);
+    list->head->next = sll_create_node(20);
+    list->head->next->next = sll_create_node(30);
     
+    // Print the contents of the linked list
+    sll_print_list(list);
+    
+    // Deallocate all the nodes
+    sll_destroy_node(list->head->next->next);
+    sll_destroy_node(list->head->next);
+    sll_destroy_node(list->head);
+    
+    // Deallocate the linked list
+    sll_destroy_list(list);
     
     return 0;
 }
@@ -54,8 +70,8 @@ SLLNode *sll_create_node(int val) {
     return n;
 }
 
-void sll_destroy_node(SLLNode *n) {
-    free(n);
+void sll_destroy_node(SLLNode *node) {
+    free(node);
 }
 
 SLList *sll_create_list() {
@@ -73,11 +89,11 @@ void sll_destroy_list(SLList *list) {
 }
 
 void sll_print_list(SLList *list) {
-    
+
 }
 
 int sll_is_empty(SLList *list) {
-    
+
 }
 
 int sll_get_size(SLList *list) {
