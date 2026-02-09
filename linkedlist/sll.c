@@ -71,3 +71,35 @@ void sll_destroy_list(SLList *list) {
     
     free(list);
 }
+
+void sll_print_list(SLList *list) {
+    
+}
+
+int sll_is_empty(SLList *list) {
+    
+}
+
+int sll_get_size(SLList *list) {
+    
+}
+
+int sll_search(SLList *list, int query) {
+    
+}
+
+void sll_add_head(SLList *list, int val) {
+    
+}
+
+void sll_add_tail(SLList *list, int val) {
+    
+}
+
+SLLNode *sll_remove_head(SLList *list) {
+    
+}
+
+SLLNode *sll_remove_tail(SLList *list) {
+    
+}
