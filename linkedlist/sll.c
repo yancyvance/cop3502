@@ -32,8 +32,9 @@ SLLNode *sll_remove_head(SLList *list);
 SLLNode *sll_remove_tail(SLList *list);
 
 // Additional for Exercise
-SLLNode *sll_get_at(int pos);
-void sll_insert_at(int pos, int val);
+SLLNode *sll_get_element_at(SLList *list, int index);
+SLLNode *sll_remove_at(SLList *list, int index);
+void sll_insert_at(SLList *list, int index, int val);
 
 
 int main(void) {
