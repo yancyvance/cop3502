@@ -1,0 +1,12 @@
+3 3
+Coco Ragdoll 85 90 75 80 88
+Polter Ragdoll 70 85 92 78 81
+Hana DSH 95 72 80 91 77
+Leo Tux 88 12 71 83 79
+Fudge DSH 76 81 89 92 84
+Pieces DSH 82 77 86 79 93
+Caesar Siamese 47 82 15 63 91
+Percy DSH 28 54 76 39 12
+Pikachu DSH 58 23 87 41 69
+1
+Coco Polter
