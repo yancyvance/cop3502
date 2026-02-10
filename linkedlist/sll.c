@@ -54,6 +54,7 @@ int main(void) {
     sll_destroy_node(list->head->next->next);
     sll_destroy_node(list->head->next);
     sll_destroy_node(list->head);
+    list->head = NULL;
     
     // Deallocate the linked list
     sll_destroy_list(list);
@@ -95,7 +96,16 @@ SLList *sll_create_list() {
 }
 
 void sll_destroy_list(SLList *list) {
-    // Incomplete Definition
+    SLLNode *ptr = list->head;
+    SLLNode *tmp;
+    
+    while( ptr != NULL ) {
+        tmp = ptr->next;
+        
+        sll_destroy_node(ptr);
+        
+        ptr = tmp;
+    }
     
     free(list);
 }
