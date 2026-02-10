@@ -168,6 +168,8 @@ void sll_add_tail(SLList *list, int val) {
 SLLNode *sll_remove_head(SLList *list) {
     // Note: We need to add a safeguard
     // if the list is empty
+    if( sll_is_empty(list) )
+        return NULL;
     
     SLLNode *tmp = list->head;
     
@@ -176,9 +178,12 @@ SLLNode *sll_remove_head(SLList *list) {
     return tmp;
 }
 
+/*
 SLLNode *sll_remove_tail(SLList *list) {
     // Note: We need to add a safeguard
     // if the list is empty
+    if( sll_is_empty(list) )
+        return NULL;
     
     if( list->head->next == NULL ) {
         SLLNode *tmp = list->head;
@@ -194,4 +199,143 @@ SLLNode *sll_remove_tail(SLList *list) {
     SLLNode *tmp = ptr->next;
     ptr->next = NULL;
     return tmp;
+}
+*/
+
+SLLNode *sll_remove_tail(SLList *list) {
+    // Note: We need to add a safeguard
+    // if the list is empty
+    if( sll_is_empty(list) )
+        return NULL;
+    
+    // Uses the concept of trailing pointer    
+    SLLNode *ptr = list->head;
+    SLLNode *trail = NULL;
+    
+    while( ptr->next != NULL ) {
+        trail = ptr;
+        ptr = ptr->next;
+    }
+    
+    // Check if head
+    if( trail == NULL ) {
+        SLLNode *tmp = list->head;
+        list->head = NULL;
+        return tmp;
+    }
+    
+    trail->next = NULL;
+    return ptr;
+}
+
+SLLNode *sll_delete(SLList *list, int query) {
+    // Note: We need to add a safeguard
+    // if the list is empty
+    if( sll_is_empty(list) )
+        return NULL;
+        
+    // Perform a search but stop at the node
+    // prior to the query's node
+    // Recall: When deleting a node,
+    // we need to update the node that comes
+    // before it
+    SLLNode *ptr = list->head;
+    SLLNode *trail = NULL;
+    
+    while( ptr != NULL ) {
+        //printf("%d -> ", ptr->data);
+        if( ptr->data == query )
+            break;
+        
+        trail = ptr;
+        ptr = ptr->next;
+    }
+    
+    // Node is found
+    if( ptr ) {
+        // Check if head
+        if( trail == NULL ) {
+            return sll_remove_head( list );
+        }
+        else {
+            trail->next = ptr->next;
+            return ptr;
+        }
+    }
+    
+    return NULL;
+}
+
+SLLNode *sll_get_element_at(SLList *list, int index) {
+    // Similar to getting the size
+    int count = 0;
+    SLLNode *ptr = list->head;
+    
+    while( ptr != NULL ) {
+        if( count == index )
+            return ptr;
+            
+        count++;
+        ptr = ptr->next;
+    }
+    
+    return NULL;
+}
+
+SLLNode *sll_remove_at(SLList *list, int index) {
+    // Similar to get element at AND delete
+    int count = 0;
+    SLLNode *ptr = list->head;
+    SLLNode *trail = NULL;
+    
+    while( ptr != NULL ) {
+        if( count == index )
+            break;
+            
+        count++;
+        trail = ptr;
+        ptr = ptr->next;
+    }
+    
+    // Node is found
+    if( ptr ) {
+        // Check if head
+        if( trail == NULL ) {
+            return sll_remove_head( list );
+        }
+        else {
+            trail->next = ptr->next;
+            return ptr;
+        }
+    }
+    
+    return NULL;
+}
+
+void sll_insert_at(SLList *list, int index, int val) {
+    // Similar to remove at
+    int count = 0;
+    SLLNode *ptr = list->head;
+    SLLNode *trail = NULL;
+    
+    while( ptr != NULL ) {
+        if( count == index )
+            break;
+            
+        count++;
+        trail = ptr;
+        ptr = ptr->next;
+    }
+    
+    
+    // Check if head
+    if( trail == NULL ) {
+        sll_add_head(list, val);
+    }
+    else {
+        // create a node
+        SLLNode *tmp = sll_create_node(val);
+        tmp->next = ptr;
+        trail->next = tmp;
+    }
 }
