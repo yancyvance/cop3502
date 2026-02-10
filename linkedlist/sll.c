@@ -58,6 +58,16 @@ int main(void) {
     // Deallocate the linked list
     sll_destroy_list(list);
     
+    /*
+    list = sll_create_list();
+    for(int i = 1; i <= 10; i+=2) {
+        sll_add_head(list, i*10);
+        sll_add_tail(list, (i+1)*10);
+    } 
+    sll_print_list(list);
+    sll_destroy_list(list);
+    */
+    
     return 0;
 }
 
@@ -85,39 +95,103 @@ SLList *sll_create_list() {
 }
 
 void sll_destroy_list(SLList *list) {
-    // Incomplete
+    // Incomplete Definition
     
     free(list);
 }
 
 void sll_print_list(SLList *list) {
-
+    SLLNode *ptr = list->head;
+    
+    while( ptr != NULL ) {
+        printf("%d -> ", ptr->data);
+        
+        ptr = ptr->next;
+    }
+    
+    printf("NULL\n");
 }
 
 int sll_is_empty(SLList *list) {
-
+    return list->head == NULL;
 }
 
 int sll_get_size(SLList *list) {
+    int count = 0;
+    SLLNode *ptr = list->head;
     
+    while( ptr != NULL ) {
+        //printf("%d -> ", ptr->data);
+        count++;
+        
+        ptr = ptr->next;
+    }
+    return count;
 }
 
 int sll_search(SLList *list, int query) {
+    SLLNode *ptr = list->head;
     
+    while( ptr != NULL ) {
+        //printf("%d -> ", ptr->data);
+        if( ptr->data == query )
+            return 1;
+            
+        ptr = ptr->next;
+    }
+    
+    return 0;
 }
 
 void sll_add_head(SLList *list, int val) {
+    SLLNode *tmp = sll_create_node(val);
     
+    tmp->next = list->head;
+    list->head = tmp;
 }
 
 void sll_add_tail(SLList *list, int val) {
+    if( list->head == NULL ) {
+        list->head = sll_create_node(val);
+        return;
+    }
     
+    SLLNode *ptr = list->head;
+    
+    while( ptr->next != NULL ) {
+        ptr = ptr->next;
+    }
+    
+    ptr->next = sll_create_node(val);
 }
 
 SLLNode *sll_remove_head(SLList *list) {
+    // Note: We need to add a safeguard
+    // if the list is empty
     
+    SLLNode *tmp = list->head;
+    
+    list->head = tmp->next;
+    
+    return tmp;
 }
 
 SLLNode *sll_remove_tail(SLList *list) {
+    // Note: We need to add a safeguard
+    // if the list is empty
     
+    if( list->head->next == NULL ) {
+        SLLNode *tmp = list->head;
+        list->head = NULL;
+        return tmp;
+    }
+    
+    SLLNode *ptr = list->head;
+    while( ptr->next->next != NULL ) {
+        ptr = ptr->next;
+    }
+    
+    SLLNode *tmp = ptr->next;
+    ptr->next = NULL;
+    return tmp;
 }
