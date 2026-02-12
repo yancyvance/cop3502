@@ -1,22 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct SLLNode_s {
-    int data;
-    struct SLLNode_s *next;
-} SLLNode;
-
 typedef struct Queue_s {
-    SLLNode *front;
-    SLLNode *rear;
+    int *array;
+    int rear;
+    int capacity;
 } Queue;
 
 
 // Function Prototypes
-
-// Housekeeping for Nodes
-SLLNode *sll_create_node(int val);
-void sll_destroy_node(SLLNode *node);
 
 // Housekeeping for Queue
 Queue *queue_create();
@@ -77,47 +69,25 @@ int main(void) {
 
 
 // Function Definitions
-SLLNode *sll_create_node(int val) {
-    SLLNode *n = malloc(sizeof(SLLNode));
-    
-    n->data = val;
-    n->next = NULL;
-    
-    return n;
-}
-
-void sll_destroy_node(SLLNode *node) {
-    free(node);
-}
-
 Queue *queue_create() {
     Queue *queue = malloc(sizeof(Queue));
     
-    queue->front = NULL;
-    queue->rear = NULL;
+    queue->rear = -1;
+    queue->capacity = 100;      // 100 is an arbitrary value
+    queue->array = malloc( sizeof(int) * queue->capacity );
     
     return queue;
 }
 
 void queue_destroy(Queue *queue) {
-    SLLNode *ptr = queue->front;
-    SLLNode *tmp;
-    
-    // Destory all the nodes first
-    while( ptr != NULL ) {
-        tmp = ptr->next;
-        
-        sll_destroy_node(ptr);
-        
-        ptr = tmp;
-    }
+    free(queue->array);
     
     // Destroy the queue last
     free(queue);
 }
 
 int queue_is_empty(Queue *queue) {
-    return queue->front == NULL;
+    return queue->rear == -1;
 }
 
 int queue_peek(Queue *queue) {
@@ -126,22 +96,17 @@ int queue_peek(Queue *queue) {
         exit(1);
     }
     
-    return queue->front->data;
+    return queue->array[0];
 }
 
 void queue_enqueue(Queue *queue, int val) {
-    SLLNode *tmp = sll_create_node(val);
-    
-    // Scenario 1
-    if( queue_is_empty(queue) ) {
-        queue->front = tmp;
-        queue->rear = tmp;
-        return;
+    if( queue_is_full(queue) ) {
+        printf("Queue is Full!\n");
+        exit(1);
     }
     
-    // Scenario 2
-    queue->rear->next = tmp;
-    queue->rear = tmp;
+    queue->array[++queue->rear] = val;
+    return;
 }
 
 int queue_dequeue(Queue *queue) {
@@ -150,23 +115,19 @@ int queue_dequeue(Queue *queue) {
         exit(1);
     }
     
-    SLLNode *tmp = queue->front;
-    queue->front = tmp->next;
+    int val = queue->array[0];
     
-    // Scenario 1 Only
-    if( queue->front == NULL ) {
-        queue->rear = NULL;
+    for(int i = 0; i <= queue->rear-1; i++) {
+        queue->array[i] = queue->array[i+1];
     }
     
-    int val = tmp->data;
-    sll_destroy_node(tmp);
+    queue->rear--;
+    
     return val;
 }
 
 int queue_is_full(Queue *queue) {
-    // Does not make sense for Linked List
-    // backend. Therefore, always report not full.
-    return 0;
+    return queue->rear+1 == queue->capacity;
 }
 
 void queue_print(Queue *queue) {
@@ -175,12 +136,8 @@ void queue_print(Queue *queue) {
         return;
     }
     
-    SLLNode *ptr = queue->front;
-    
-    while( ptr != NULL ) {            
-        printf("%d -> ", ptr->data);
-        
-        ptr = ptr->next;
-    }        
-    printf("NULL\n");
+    for(int i = 0; i <= queue->rear; i++) {         
+        printf("%d ", queue->array[i]);
+    }
+    printf("\n");
 }
