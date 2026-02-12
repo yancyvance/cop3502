@@ -106,7 +106,6 @@ void queue_enqueue(Queue *queue, int val) {
     }
     
     queue->array[++queue->rear] = val;
-    return;
 }
 
 int queue_dequeue(Queue *queue) {
@@ -117,7 +116,7 @@ int queue_dequeue(Queue *queue) {
     
     int val = queue->array[0];
     
-    for(int i = 0; i <= queue->rear-1; i++) {
+    for(int i = 0; i < queue->rear; i++) {
         queue->array[i] = queue->array[i+1];
     }
     
