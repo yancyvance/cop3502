@@ -5,7 +5,7 @@
     This program is written by: Your Full Name
 
     This file is intentionally incomplete to simulate a written exam.
-    Further, you will not be provided the contents of the q1.h file.
+    Further, you will not be provided the contents of the q2.h file.
 
     You should first work out your solution using pencil and paper.
     Once you are confident in your answer, type the final solution
