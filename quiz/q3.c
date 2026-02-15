@@ -24,7 +24,7 @@
 
 
 #ifdef T1
-void *solve(int *solution, int size) {
+void solve(int *solution, int size) {
     // TODO: Complete this function
     // TODO 1 BEGIN
 
