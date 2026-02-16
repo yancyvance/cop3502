@@ -28,7 +28,6 @@ int queue_peek(Queue *queue);
 void queue_enqueue(Queue *queue, int val);
 int queue_dequeue(Queue *queue);
 int queue_is_full(Queue *queue);
-void queue_print(Queue *queue);
 
 
 int main(void) {
@@ -39,16 +38,10 @@ int main(void) {
     for(int i = 1; i <= 15; i++)
         queue_enqueue(queue, i);
     
-    // Print the contents
-    queue_print(queue);
-    
     // Empty the queue
     while( !queue_is_empty(queue) ) {
         printf("%d\n", queue_dequeue(queue));
     }
-    
-    // Print the contents
-    queue_print(queue);
     
     // Destroy the queue
     queue_destroy(queue);
@@ -167,20 +160,4 @@ int queue_is_full(Queue *queue) {
     // Does not make sense for Linked List
     // backend. Therefore, always report not full.
     return 0;
-}
-
-void queue_print(Queue *queue) {
-    if( queue_is_empty(queue) ) {
-        printf("EMPTY\n");
-        return;
-    }
-    
-    SLLNode *ptr = queue->front;
-    
-    while( ptr != NULL ) {            
-        printf("%d -> ", ptr->data);
-        
-        ptr = ptr->next;
-    }        
-    printf("NULL\n");
 }
