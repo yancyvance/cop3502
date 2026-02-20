@@ -1,0 +1,15 @@
+25 Whiskers 20
+10 Luna 75
+60 Tiger 15
+11 Mochi 30
+33 Shadow 4
+13 Puff 0
+5 Salem 40
+44 Cleo 10
+18 Milo 25
+70 Leo 8
+13 Nala 12
+52 Simba 18
+90 Coco 5
+475 Midnight 10
+-1
