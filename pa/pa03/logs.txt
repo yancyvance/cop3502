@@ -3,7 +3,7 @@
 60 Tiger 15
 11 Mochi 30
 33 Shadow 4
-13 Puff 0
+14 Puff 0
 5 Salem 40
 44 Cleo 10
 18 Milo 25
