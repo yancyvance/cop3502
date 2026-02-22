@@ -24,7 +24,7 @@
 
 
 #ifdef T1
-const char *solve(int *solution, int size) {
+const char *solve(void) {
     // TODO: Complete this function
     // TODO 1 BEGIN
 
