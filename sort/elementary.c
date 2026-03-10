@@ -4,7 +4,7 @@
 void selection_sort(int *arr, int size);
 void insertion_sort(int *arr, int size);
 void bubble_sort(int *arr, int size);
-void bubble_sort_efficient(int *arr, int size);
+void bubble_sort_enhanced(int *arr, int size);
 void print_array(int *arr, int size);
 void swap(int *a, int *b);
 
@@ -64,7 +64,7 @@ void bubble_sort(int *arr, int size) {
     }
 }
 
-void bubble_sort_efficient(int *arr, int size) {
+void bubble_sort_enhanced(int *arr, int size) {
     for(int i = 0; i < size-1; i++) {
         int swapped = 0;
         for(int j = 0; j < size-1-i; j++) 
