@@ -132,12 +132,26 @@ void bubble_sort(int *arr, int size) {
 
 void bubble_sort_enhanced(int *arr, int size) {
     for(int i = 0; i < size-1; i++) {
+        // Add a flag variable to determine if
+        // there was a swap that happened for
+        // this round of linear pass. Initially,
+        // we assume that there is none.
         int swapped = 0;
-        for(int j = 0; j < size-1-i; j++) 
+        
+        for(int j = 0; j < size-1-i; j++) {
             if( arr[j] > arr[j+1] ) {
                 swap( &arr[j], &arr[j+1] );
+                
+                // If there is a swap, then
+                // set the flag to 1 (true).
                 swapped = 1;
             }
+        }
+        
+        // After the round, if no swap
+        // took place, there is no need to
+        // do another round. Therefore, we
+        // simply terminate.
         if( !swapped ) break;
     }
 }
