@@ -27,7 +27,7 @@ const char *partition(void) {
 #ifdef T3
 int version(void) {
     // Binary Exponentiation: Which version is more efficient?
-    // Simply type in a number.
+    // Simply change the return number 0 to either 1 or 2.
     return 0;
 }
 #endif
