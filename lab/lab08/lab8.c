@@ -24,6 +24,7 @@ const char *partition(void) {
 }
 #endif
 
+
 #ifdef T3
 int version(void) {
     // Binary Exponentiation: Which version is more efficient?
