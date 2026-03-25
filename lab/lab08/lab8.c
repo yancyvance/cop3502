@@ -5,7 +5,7 @@ const char *merge(void) {
     // An example is provided for reference.
 
     // Merge Sort: What is the state of the array
-    // after the sixth merge opereation?
+    // after the sixth merge operation?
     return "1 2 3 4 5";
 }
 #endif
