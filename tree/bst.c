@@ -38,8 +38,8 @@ void bst_inorder_recursive(BSTNode *node);
 void bst_preorder_recursive(BSTNode *node);
 void bst_postorder_recursive(BSTNode *node);
 int bst_search_recursive(BSTNode *node, int query);
-void bst_insert_recursive(BSTNode **node, int value);
-BSTNode *bst_remove_recursive(BSTNode **node, int query);
+BSTNode *bst_insert_recursive(BSTNode *node, int value);
+BSTNode *bst_remove_recursive(BSTNode *node, int query);
 
 
 int main(void) {
@@ -157,10 +157,10 @@ int bst_search_recursive(BSTNode *node, int query) {
     
 }
 
-void bst_insert_recursive(BSTNode **node, int value) {
+BSTNode *bst_insert_recursive(BSTNode *node, int value) {
     
 }
 
-BSTNode *bst_remove_recursive(BSTNode **node, int query) {
+BSTNode *bst_remove_recursive(BSTNode *node, int query) {
     
 }
