@@ -26,7 +26,7 @@ void bst_destroy(BSTree *tree);
 int bst_is_empty(BSTree *tree);
 int bst_search(BSTree *tree, int query);
 void bst_insert(BSTree *tree, int value);
-BSTNode *bst_remove(BSTree *tree, int query);
+void bst_remove(BSTree *tree, int query);
 
 // Wrapper Functions
 void bst_inorder(BSTree *tree);
@@ -125,7 +125,7 @@ void bst_insert(BSTree *tree, int value) {
     
 }
 
-BSTNode *bst_remove(BSTree *tree, int query) {
+void bst_remove(BSTree *tree, int query) {
     
 }
 
