@@ -21,12 +21,17 @@ void bst_destroy_node(BSTNode *node);
 // Housekeeping for Linked List
 BSTree *bst_create();
 void bst_destroy(BSTree *tree);
+void bst_destroy_recursive(BSTNode *node);
 
 // Essential Operations
 int bst_is_empty(BSTree *tree);
 int bst_search(BSTree *tree, int query);
 void bst_insert(BSTree *tree, int value);
 void bst_remove(BSTree *tree, int query);
+
+// Helper Functions
+BSTNode *bst_find_successor(BSTNode *node);
+void bst_remove_helper(BSTree *tree, BSTNode *n, BSTNode *p);
 
 // Wrapper Functions
 void bst_inorder(BSTree *tree);
@@ -79,7 +84,6 @@ int main(void) {
 
 
 // Function Definitions
-// function definitions
 BSTNode *bst_create_node(int value) {
     BSTNode *node = malloc( sizeof(BSTNode) );
     
@@ -107,10 +111,20 @@ BSTree *bst_create() {
 }
 
 void bst_destroy(BSTree *tree) {
-    // This is still incomplete
+    bst_destroy_recursive( tree->root );
     
     // destroy the tree
     free(tree);
+}
+
+void bst_destroy_recursive(BSTNode *node) {
+    if(node == NULL)
+        return;
+        
+    // postorder traversal: LRV
+    bst_destroy_recursive(node->left);
+    bst_destroy_recursive(node->right);
+    free(node);
 }
 
 int bst_is_empty(BSTree *tree) {
@@ -129,16 +143,27 @@ void bst_remove(BSTree *tree, int query) {
     
 }
 
+BSTNode *bst_find_successor(BSTNode *node) {
+    
+}
+
+void bst_remove_helper(BSTree *tree, BSTNode *n, BSTNode *p) {
+    
+}
+
 void bst_inorder(BSTree *tree) {
     bst_inorder_recursive( tree->root );
+    printf("\n");
 }
 
 void bst_preorder(BSTree *tree) {
     bst_preorder_recursive( tree->root );
+    printf("\n");
 }
 
 void bst_postorder(BSTree *tree) {
     bst_postorder_recursive( tree->root );
+    printf("\n");
 }
 
 void bst_inorder_recursive(BSTNode *node) {
