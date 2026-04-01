@@ -274,10 +274,6 @@ BSTNode *bst_find_successor(BSTNode *node) {
     return ptr;
 }
 
-void bst_remove_helper(BSTree *tree, BSTNode *n, BSTNode *p) {
-    // Leftover helper function from an iterative version.
-}
-
 void bst_inorder(BSTree *tree) {
     bst_inorder_recursive( tree->root );
     printf("\n");
