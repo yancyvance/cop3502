@@ -18,7 +18,7 @@ typedef struct BSTree_s {
 BSTNode *bst_create_node(int val);
 void bst_destroy_node(BSTNode *node);
 
-// Housekeeping for Linked List
+// Housekeeping for Binary Search Tree
 BSTree *bst_create();
 void bst_destroy(BSTree *tree);
 void bst_destroy_recursive(BSTNode *node);
@@ -31,7 +31,6 @@ void bst_remove(BSTree *tree, int query);
 
 // Helper Functions
 BSTNode *bst_find_successor(BSTNode *node);
-void bst_remove_helper(BSTree *tree, BSTNode *n, BSTNode *p);
 
 // Wrapper Functions
 void bst_inorder(BSTree *tree);
@@ -143,7 +142,7 @@ int bst_search(BSTree *tree, int query) {
         if( ptr->data == query )
             return 1;
             
-        if( query < ptr->data )
+        if( query <= ptr->data )
             ptr = ptr->left;
         else
             ptr = ptr->right;
@@ -164,7 +163,7 @@ void bst_insert(BSTree *tree, int value) {
     while( ptr != NULL ) {
         trail = ptr;
             
-        if( value < ptr->data )
+        if( value <= ptr->data )
             ptr = ptr->left;
         else
             ptr = ptr->right;
@@ -175,7 +174,7 @@ void bst_insert(BSTree *tree, int value) {
     // Non-root modification
     if( trail ) {
         // Determine whether left or right
-        if( value < trail->data )
+        if( value <= trail->data )
             trail->left = n;
         else
             trail->right = n;
@@ -197,7 +196,7 @@ void bst_remove(BSTree *tree, int query) {
     while( ptr != NULL && ptr->data != query ) {
         trail = ptr;
             
-        if( query < ptr->data )
+        if( query <= ptr->data )
             ptr = ptr->left;
         else
             ptr = ptr->right;
@@ -333,7 +332,7 @@ int bst_search_recursive(BSTNode *node, int query) {
         
     // Otherwise, search either the left or right subtree
     // based on the value we are searching for
-    if( query < node->data )
+    if( query <= node->data )
         return bst_search_recursive( node->left, query );
         
     return bst_search_recursive( node->right, query );
@@ -354,7 +353,7 @@ BSTNode *bst_insert_recursive(BSTNode *node, int value) {
     }
     
     // Otherwise, we want to look for an empty slot
-    if( value < node->data ) {
+    if( value <= node->data ) {
         node->left = bst_insert_recursive( node->left, value );
     }
     else {
