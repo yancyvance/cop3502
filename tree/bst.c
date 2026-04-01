@@ -132,15 +132,135 @@ int bst_is_empty(BSTree *tree) {
 }
 
 int bst_search(BSTree *tree, int query) {
-    return bst_search_recursive( tree->root, query );
+    // Uncomment the following and remove the other codes
+    // and this function will simply act as a wrapper function
+    // and will call the corresponding recursive function.
+    //return bst_search_recursive( tree->root, query );
+    
+    BSTNode *ptr = tree->root;
+    
+    while( ptr != NULL ) {
+        if( ptr->data == query )
+            return 1;
+            
+        if( query < ptr->data )
+            ptr = ptr->left;
+        else
+            ptr = ptr->right;
+    }
+    
+    return 0;
 }
 
 void bst_insert(BSTree *tree, int value) {
-    tree->root = bst_insert_recursive( tree->root, value );
+    // Uncomment the following and remove the other codes
+    // and this function will simply act as a wrapper function
+    // and will call the corresponding recursive function.
+    //tree->root = bst_insert_recursive( tree->root, value );
+    
+    BSTNode *ptr = tree->root;
+    BSTNode *trail = NULL;
+    
+    while( ptr != NULL ) {
+        trail = ptr;
+            
+        if( value < ptr->data )
+            ptr = ptr->left;
+        else
+            ptr = ptr->right;
+    }
+    
+    BSTNode *n = bst_create_node(value);
+    
+    // Non-root modification
+    if( trail ) {
+        // Determine whether left or right
+        if( value < trail->data )
+            trail->left = n;
+        else
+            trail->right = n;
+    }
+    else {
+        tree->root = n;
+    }
 }
 
 void bst_remove(BSTree *tree, int query) {
-    tree->root = bst_remove_recursive( tree->root, query );
+    // Uncomment the following and remove the other codes
+    // and this function will simply act as a wrapper function
+    // and will call the corresponding recursive function.
+    //tree->root = bst_remove_recursive( tree->root, query );
+    
+    BSTNode *ptr = tree->root;
+    BSTNode *trail = NULL;
+    
+    while( ptr != NULL && ptr->data != query ) {
+        trail = ptr;
+            
+        if( query < ptr->data )
+            ptr = ptr->left;
+        else
+            ptr = ptr->right;
+    }
+    
+    if( !ptr )
+        return;
+        
+    // Determine the scenario. The general idea is to
+    // begin with Scenario 3 because after copying the
+    // successor, we will end up with a Scenario 1 or 2.
+    
+    // Scenario 3: Both Children
+    if( ptr->left && ptr->right ) {
+        BSTNode *s = ptr->right;
+        BSTNode *s_parent = ptr;
+        
+        // Find the successor
+        while( s->left != NULL ) {
+            s_parent = s;
+            s = s->left;
+        }
+        
+        // Copy the data value
+        ptr->data = s->data;
+        
+        // Do the actual deletion on this node.
+        // So, we replace the nodes being referred to.
+        trail = s_parent;
+        ptr = s;
+    }
+    
+    
+    // Scenario 1: No Children
+    if( ptr->left == NULL && ptr->right == NULL ) {
+        if( trail == NULL ) {
+            tree->root = NULL;
+        }
+        else if( ptr == trail->left ) {
+            trail->left = NULL;
+        }
+        else {
+            trail->right = NULL;
+        }
+        
+        bst_destroy_node( ptr );
+    }
+    else if( ptr->left == NULL || ptr->right == NULL ) {
+        // Scenario 2: One Child
+        BSTNode *c = ptr->left ? ptr->left : ptr->right;
+        
+        if( trail == NULL ) {
+            tree->root = c;
+        }
+        else if( ptr == trail->left ) {
+            trail->left = c;
+        }
+        else {
+            trail->right = c;
+        }
+        
+        bst_destroy_node( ptr );
+    }
 }
 
 BSTNode *bst_find_successor(BSTNode *node) {
