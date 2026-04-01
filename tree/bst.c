@@ -124,31 +124,38 @@ void bst_destroy_recursive(BSTNode *node) {
     // postorder traversal: LRV
     bst_destroy_recursive(node->left);
     bst_destroy_recursive(node->right);
-    free(node);
+    bst_destroy_node(node);
 }
 
 int bst_is_empty(BSTree *tree) {
-    
+    return tree->root == NULL;
 }
 
 int bst_search(BSTree *tree, int query) {
-    
+    return bst_search_recursive( tree->root, query );
 }
 
 void bst_insert(BSTree *tree, int value) {
-    
+    tree->root = bst_insert_recursive( tree->root, value );
 }
 
 void bst_remove(BSTree *tree, int query) {
-    
+    tree->root = bst_remove_recursive( tree->root, query );
 }
 
 BSTNode *bst_find_successor(BSTNode *node) {
+    // Go to the right once
+    BSTNode *ptr = node->right;
     
+    // Find all the way to the left
+    while( ptr->left != NULL )
+        ptr = ptr->left;
+        
+    return ptr;
 }
 
 void bst_remove_helper(BSTree *tree, BSTNode *n, BSTNode *p) {
-    
+    // Leftover helper function from an iterative version.
 }
 
 void bst_inorder(BSTree *tree) {
@@ -167,25 +174,125 @@ void bst_postorder(BSTree *tree) {
 }
 
 void bst_inorder_recursive(BSTNode *node) {
-
+    if( node == NULL ) {
+        return;
+    }
+    
+    // LVR
+    bst_inorder_recursive( node->left );
+    printf("%d ", node->data);
+    bst_inorder_recursive( node->right );
 }
 
 void bst_preorder_recursive(BSTNode *node) {
+    if( node == NULL ) {
+        return;
+    }
     
+    // VLR
+    printf("%d ", node->data);
+    bst_preorder_recursive( node->left );
+    bst_preorder_recursive( node->right );
 }
 
 void bst_postorder_recursive(BSTNode *node) {
+    if( node == NULL ) {
+        return;
+    }
     
+    // LRV
+    bst_postorder_recursive( node->left );
+    bst_postorder_recursive( node->right );
+    printf("%d ", node->data);
 }
 
 int bst_search_recursive(BSTNode *node, int query) {
-    
+    // If there is no node, then report failure of search
+    if( node == NULL )
+        return 0;
+        
+    // Check if the current node matches the query value
+    if( node->data == query )
+        return 1;
+        
+    // Otherwise, search either the left or right subtree
+    // based on the value we are searching for
+    if( query < node->data )
+        return bst_search_recursive( node->left, query );
+        
+    return bst_search_recursive( node->right, query );
 }
 
 BSTNode *bst_insert_recursive(BSTNode *node, int value) {
+    // General Idea: Initially accept the root of the tree
+    // where we want to insert the new node. Because it is
+    // possible for the root to be modified, this function
+    // returns a pointer to the root of the updated tree.
+    // This is a recursive solution.
     
+    // If node is non-existent, it means we are dealing
+    // with an empty tree
+    if( node == NULL ) {
+        BSTNode *n = bst_create_node( value );
+        return n;
+    }
+    
+    // Otherwise, we want to look for an empty slot
+    if( value < node->data ) {
+        node->left = bst_insert_recursive( node->left, value );
+    }
+    else {
+        node->right = bst_insert_recursive( node->right, value );
+    }
+    
+    return node;
 }
 
 BSTNode *bst_remove_recursive(BSTNode *node, int query) {
+    // General Idea: Initially accept the root of the tree
+    // where we want to perform the delete. Because it is
+    // possible for the root to be modified, this function
+    // returns a pointer to the root of the updated tree.
+    // This is a recursive solution.
     
+    // If node is non-existent, it means the tree is empty
+    if( node == NULL ) {
+        return NULL;
+    }
+    
+    if( query < node->data ) {
+        node->left = bst_remove_recursive( node->left, query );
+    }
+    else if( query > node->data ) {
+        node->right = bst_remove_recursive( node->right, query );
+    }
+    else {
+        // Check which scenario we are dealing with
+
+        if( node->left == NULL && node->right == NULL ) {
+            // Scenario 1: No Children
+            bst_destroy_node(node);
+            return NULL;
+        }
+        else if( node->left == NULL || node->right == NULL ) {
+            // Scenario 2: One Child
+            // Determine which child
+            BSTNode *tmp = node->left ? node->left : node->right;
+            bst_destroy_node(node);
+            return tmp;
+        }
+        else {
+            // Scenario 3: Both Children
+            // Find the Successor
+            BSTNode *s = bst_find_successor( node );
+            
+            // Copy the value
+            node->data = s->data;
+            
+            // Remove that node on the right
+            node->right = bst_remove_recursive( node->right, s->data );
+        }
+    }
+    
+    return node;
 }
