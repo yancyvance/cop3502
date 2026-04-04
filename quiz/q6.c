@@ -24,7 +24,7 @@
 
 
 #ifdef T1
-void isBalanced(BTNode *r) {
+int isBalanced(BTNode *r) {
     // TODO: Complete this function
     // TODO 1 BEGIN
 
