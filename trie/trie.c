@@ -26,9 +26,11 @@ void trie_insert(Trie *trie, char *word);
 int trie_search(Trie *trie, char *word);
 void trie_remove(Trie *trie, char *word);
 TrieNode *trie_remove_recursive(TrieNode *node, char *word, int pos);
-int trie_count(Trie *trie);
 int has_children(TrieNode *node);
 
+int trie_count(Trie *trie);
+void trie_insert_recursive(TrieNode *node, char *word, int pos);
+int trie_search_recursive(TrieNode *node, char *word, int pos);
 
 int main(void) {
     // create a trie
@@ -79,7 +81,7 @@ int main(void) {
 }
 
 
-// create and destroy nodes
+// Function Definitions
 TrieNode *trie_create_node() {
     TrieNode *node = malloc( sizeof(TrieNode) );
     
@@ -208,16 +210,28 @@ TrieNode *trie_remove_recursive(TrieNode *node, char *word, int pos) {
     return node;
 }
 
-int trie_count(Trie *trie) {
-    // TODO: Implement this
-    
-    return -1;
-}
-
 int has_children(TrieNode *node) {
+    // Helper Function
     for(int i = 0; i < MAX_CHILD_COUNT; i++) {
         if( node->children[i] )
             return 1;
     }
     return 0;
+}
+
+int trie_count(Trie *trie) {
+    // TODO: Complete this function
+    
+    return -1;
+}
+
+void trie_insert_recursive(TrieNode *node, char *word, int pos) {
+    // TODO: Complete this function
+    
+}
+
+int trie_search_recursive(TrieNode *node, char *word, int pos) {
+    // TODO: Complete this function
+    
+    return -1;
 }
