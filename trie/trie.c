@@ -138,7 +138,8 @@ void trie_destroy_recursive(TrieNode *node) {
 void trie_insert(Trie *trie, char *word) {
     TrieNode *ptr = trie->root;
     
-    for(int i = 0; word[i] != '\0'; i++) {
+    int len = strlen(word);
+    for(int i = 0; i < len; i++) {
         int idx = word[i] - 'a';
         
         if( ptr->children[idx] == NULL ) {
@@ -154,7 +155,8 @@ void trie_insert(Trie *trie, char *word) {
 int trie_search(Trie *trie, char *word) {
     TrieNode *ptr = trie->root;
     
-    for(int i = 0; word[i] != '\0'; i++) {
+    int len = strlen(word);
+    for(int i = 0; i < len; i++) {
         int idx = word[i] - 'a';
         
         if( ptr->children[idx] == NULL )
