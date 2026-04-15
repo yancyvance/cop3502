@@ -140,7 +140,8 @@ void trie_insert(Trie *trie, char *word) {
     
     int len = strlen(word);
     for(int i = 0; i < len; i++) {
-        int idx = word[i] - 'a';
+        char tmp = word[i];
+        int idx = tmp - 'a';
         
         if( ptr->children[idx] == NULL ) {
             ptr->children[idx] = trie_create_node();
@@ -157,7 +158,8 @@ int trie_search(Trie *trie, char *word) {
     
     int len = strlen(word);
     for(int i = 0; i < len; i++) {
-        int idx = word[i] - 'a';
+        char tmp = word[i];
+        int idx = tmp - 'a';
         
         if( ptr->children[idx] == NULL )
             return 0;
@@ -198,7 +200,8 @@ TrieNode *trie_remove_recursive(TrieNode *node, char *word, int pos) {
     }
     
     // Proceed to the next letter (i.e., node)
-    int idx = word[pos] - 'a';
+    char tmp = word[pos];
+    int idx = tmp - 'a';
     node->children[idx] = trie_remove_recursive(node->children[idx], word, pos+1);
     
     // If this node does not have any children; AND
