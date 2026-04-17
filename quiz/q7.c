@@ -24,7 +24,7 @@
 
 
 #ifdef T1
-int heapInsert(int heapArr[], int heapSize, int heapCapacity, int item) {
+int heapInsert(int heapArr[], int *heapSize, int heapCapacity, int item) {
     // TODO: Complete this function
     // TODO 1 BEGIN
 
