@@ -54,14 +54,14 @@ int find_cat_index(const CatHeap *heap, const char *name);
 double compute_adoption_key(const Cat *c, const Shelter *S);
 double compute_triage_key(const Cat *c);
 void recompute_all_keys_and_build(Shelter *S);
-void cmd_add (Shelter *S, const char *name, const char *breed, int age, int friendl, int health);
+void cmd_add(Shelter *S, const char *name, const char *breed, int age, int friendl, int health);
 void cmd_update(Shelter *S, const char *name, const char *field, int new_value);
 void cmd_remove(Shelter *S, const char *name);
-void cmd_peek (const Shelter *S);
+void cmd_peek(const Shelter *S);
 void cmd_serve(Shelter *S);
-void cmd_mode  (Shelter *S, const char *mode_str);
+void cmd_mode(Shelter *S, const char *mode_str);
 void cmd_featured(Shelter *S, const char *breed, double alpha);
-void cmd_print (const Shelter *S, int k);
+void cmd_print(const Shelter *S, int k);
 
 // You may add more functions if necessary
 
